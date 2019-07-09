@@ -7,6 +7,6 @@
  to make a message or words more or less unreable for those
  who don't know what they are looking at.
 
- Install the module pyperclip to copy you message your clipboard.
+ Install the module pyperclip to copy your message your clipboard.
 
   $ pip install pyperclip $
