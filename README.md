@@ -1,6 +1,6 @@
 # Portfolio
 
-# Secret Message Converter
+## Secret Message Converter
 
  Convert dutch messages or words to a secret language.
  It simply addes ISH to certain combinations of letters
@@ -10,5 +10,3 @@
  Install the module pyperclip to copy you message your clipboard.
 
   $ pip install pyperclip $
-
-Might in handy. 
