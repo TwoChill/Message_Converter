@@ -1,12 +1,36 @@
-# Portfolio
+# Message Converter
 
-## Secret Message Converter
+Converts a message(s) or word(s) to a made up language.
 
- Convert dutch messages or words to a secret language.
- It simply addes ISH to certain combinations of letters
- to make a message or words more or less unreable for those
- who don't know what they are looking at.
 
- Install the module pyperclip to copy your message your clipboard.
+## Getting Started
 
-  $ pip install pyperclip $
+* Run Secret_Message_Converter.py script in Python 3.
+
+* Enter your message / text.
+* Press Enter/Return.
+* Copy the new text to your clipboard or not.
+
+
+### Prerequisites
+
+To use the Copy-To-Clipboard install module pyperclip:
+
+* On Windows:
+    ```
+    pip install pyperclip
+    ```
+* On Ubuntu:
+    ```
+    sudo apt-get update
+    sudo apt-get install python3-pyperclip
+    ```
+
+## Built With
+
+* [Atom](http://atom.io) - A well known text editor.
+
+
+## Authors
+
+* **Michael de France** - *Initial work* - [TwoChill](https://github.com/TwoChill)
