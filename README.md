@@ -5,7 +5,10 @@ Converts a message(s) or word(s) to a made up language.
 
 ## Getting Started
 
-* Run Secret_Message_Converter.py script in Python 3.
+* Run ```git clone https://github.com/MdeFrance/Message-Converter.git```
+
+
+* Run ```(YOUR PATH)/Message_Converter.py ```
 
 * Enter your message / text.
 * Press Enter/Return.
