@@ -5,7 +5,7 @@ Converts a message(s) or word(s) to a made up language.
 
 ## Getting Started
 
-* Run ```git clone https://github.com/MdeFrance/Message-Converter.git```
+* Run ```git clone https://github.com/MdeFrance/Message_Converter.git```
 
 
 * Run ```(YOUR PATH)/Message_Converter.py ```
