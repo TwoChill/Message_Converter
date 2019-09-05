@@ -1,6 +1,6 @@
 # Message Converter
 
-Converts a message(s) or word(s) to a made up language.
+Scrambles a message or word(s) with the ISH chipher.
 
 
 ## Getting Started
@@ -36,4 +36,4 @@ To use the Copy-To-Clipboard install module pyperclip:
 
 ## Authors
 
-* **Michael de France** - *Initial work* - [TwoChill](https://github.com/TwoChill)
+* **Michael de France** - *Initial work* - [MdeFrance](https://github.com/MdeFrance) / [TwoChill](https://github.com/TwoChill)
