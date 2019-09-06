@@ -10,9 +10,9 @@ Scrambles a message or word(s) with the ISH chipher.
 
 * Run ```(YOUR PATH)/Message_Converter.py ```
 
-* Enter your message / text.
-* Press Enter/Return.
-* Copy the new text to your clipboard or not.
+1. Enter your message / text.
+2. Press Enter/Return.
+3. Copy the new text to your clipboard or not.
 
 
 ### Prerequisites
