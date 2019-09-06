@@ -32,6 +32,7 @@ To use the Copy-To-Clipboard install module pyperclip:
 ## Built With
 
 * [Atom](http://atom.io) - A well known text editor.
+* [Python] - A powerfull language
 
 
 ## Authors
