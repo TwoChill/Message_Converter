@@ -36,31 +36,28 @@ ciPher = "ISH"
 
 
 try:
-    convertedMSG = str(input("\nEnter your message:\n\n:> "))
+    convertedMSG = str(input("\nEnter your message:\n\n:> ")).strip('')
 
     # Replaces comma's and splits sentences to words in a list.
     convertedMSG = convertedMSG.replace(",", "~").lower().split(" ")
 
-    # 'convertedMSG' is converted and appended 'new_converterdMSG'.
-    new_converterdMSG = []
-    for index in range(0, (len(convertedMSG))):
-        new_converterdMSG.append(convertword(convertedMSG[index]))
+    convMSG = [(convertword(convertedMSG[index]))
+                         for index in range(0, (len(convertedMSG)))]
 
     print("\n\n\nYour message in " + ciPher + ": \n")
 
-    # Converts items in new_convertedMSG to a string.
-    convMSG = " ".join(new_converterdMSG).capitalize()
-
-    # Puts back the comma's.
-    convMSG = convMSG.replace("~", ",")
+    # Converts items in new_convertedMSG to a string, replaces comma's and '~' and splits by a dot.
+    convMSG = " ".join(convMSG).capitalize().replace(
+        "~", ",").split('.')
 
     # Makes every sentence begin with a capital letter and end with a dot.
-    sentence = convMSG.split('.')
-    for i in sentence:
+    for i in convMSG:
         print(i.strip().capitalize() + ".")
-
+    convMSG = ''.join(convMSG)
+    
     # Ask the user if he/she wants to copy the new text to the clipboard.
-    answer = str(input('\n\nCopy to clipboard? Y/N: ').upper())
+    answer = str(input('\n\nCopy to clipboard? Y/N: ').upper()).strip()
+
     if answer == 'Y':
         pyperclip.copy(convMSG)
         print('\n\nMessage has been copied.')
