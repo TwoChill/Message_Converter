@@ -19,11 +19,10 @@ def convertword(convertedMSG):
                 replace = ciPher + letters.upper()
                 words = words.replace(letters, replace)
 
-        for word in words:
-            for letter in words:
-                if letter in vowelList[1]:
-                    replace = ciPher + letter.upper()
-                    words = words.replace(letter, replace)
+        for letter in words:
+            if letter in vowelList[1]:
+                replace = ciPher + letter.upper()
+                words = words.replace(letter, replace)
     return words
 
 
@@ -42,7 +41,7 @@ try:
     convertedMSG = convertedMSG.replace(",", "~").lower().split(" ")
 
     convMSG = [(convertword(convertedMSG[index]))
-                         for index in range(0, (len(convertedMSG)))]
+               for index in range(0, (len(convertedMSG)))]
 
     print("\n\n\nYour message in " + ciPher + ": \n")
 
@@ -54,7 +53,7 @@ try:
     for i in convMSG:
         print(i.strip().capitalize() + ".")
     convMSG = ''.join(convMSG)
-    
+
     # Ask the user if he/she wants to copy the new text to the clipboard.
     answer = str(input('\n\nCopy to clipboard? Y/N: ').upper()).strip()
 
