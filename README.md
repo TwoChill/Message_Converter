@@ -23,7 +23,7 @@ To use the Copy-To-Clipboard install module pyperclip:
     ```
     pip install pyperclip
     ```
-* On Ubuntu:
+* On Debian:
     ```
     sudo apt-get update
     sudo apt-get install python3-pyperclip
