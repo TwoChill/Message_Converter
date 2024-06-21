@@ -1,70 +1,58 @@
 import pyperclip  # $ pip install pyperclip
 
-name = 'Message Converter'
+name = 'Message Converter (Dutch)'
 
 
-def convertword(convertedMSG):
-
-    convertedMSG = convertedMSG.split(",")
-
+def convertword(word):
     # These are the letters to concatenate with the ciPher.
-    vowelList = (("oei", "aa", "ae", "ee", "ae", "oo",
-                  "uu", "au", "ei", "eu", "ie", "ou", "oe", "ui", "ij", "io"),
-                 ("a", "e", "o", "u", "i", "y"))
+    vowel_list = (("oei", "aa", "ae", "ee", "ae", "oo", "uu", "au", "ei", "eu", "ie", "ou", "oe", "ui", "ij", "io"),
+                  ("a", "e", "o", "u", "i", "y"))
 
-    # Puts the 'ciPher' before the letters in vowelList
-    for words in convertedMSG:
-        for letters in vowelList[0]:
-            if letters in words:
-                replace = ciPher + letters.upper()
-                words = words.replace(letters, replace)
+    # Puts the 'ciPher' before the letters in vowel_list
+    for letters in vowel_list[0]:
+        if letters in word:
+            word = word.replace(letters, ciPher + letters.upper())
 
-        for letter in words:
-            if letter in vowelList[1]:
-                replace = ciPher + letter.upper()
-                words = words.replace(letter, replace)
-    return words
+    for letter in vowel_list[1]:
+        if letter in word:
+            word = word.replace(letter, ciPher + letter.upper())
 
+    return word
 
-print('\n')
 print('=' * len(name))
 print(name)
 print('=' * len(name))
 
 ciPher = "ISH"
 
-
 try:
-    convertedMSG = str(input("\nEnter your message:\n\n:> ")).strip('')
+    convertedMSG = str(input("\nEnter your message:\n:> ")).strip()
 
-    # Replaces comma's and splits sentences to words in a list.
+    # Replaces commas and splits sentences to words in a list.
     convertedMSG = convertedMSG.replace(",", "~").lower().split(" ")
 
-    convMSG = [(convertword(convertedMSG[index]))
-               for index in range(0, (len(convertedMSG)))]
+    # Convert each word in the message
+    convMSG = [convertword(word) for word in convertedMSG]
 
-    print("\n\n\nYour message in " + ciPher + ": \n")
+    print("\nYour message in " + ciPher)
 
-    # Converts items in new_convertedMSG to a string, replaces comma's and '~' and splits by a dot.
-    convMSG = " ".join(convMSG).capitalize().replace(
-        "~", ",").split('.')
+    # Join words into a single string, replace temporary '~' back to ',', and capitalize sentences.
+    convMSG = " ".join(convMSG).replace("~", ",").capitalize()
 
-    # Makes every sentence begin with a capital letter and end with a dot.
-    for i in convMSG:
-        print(i.strip().capitalize() + ".")
-    convMSG = ''.join(convMSG)
+    # Split by sentences to ensure capitalization after periods
+    sentences = convMSG.split('.')
+    convMSG = '. '.join(sentence.strip().capitalize() for sentence in sentences if sentence)
 
-    # Ask the user if he/she wants to copy the new text to the clipboard.
+    print(convMSG)
+
+    # Ask the user if they want to copy the new text to the clipboard.
     answer = str(input('\n\nCopy to clipboard? Y/N: ').upper()).strip()
 
     if answer == 'Y':
         pyperclip.copy(convMSG)
-        print('\n\nMessage has been copied.')
-        raise KeyboardInterrupt
+        print('\nMessage has been copied.')
     else:
-        print('\n\nMessage has NOT been copied.')
-        raise KeyboardInterrupt
-
+        print('\nMessage has NOT been copied.')
 
 except KeyboardInterrupt:
     print("\n\n\nGoodbye!\n")
