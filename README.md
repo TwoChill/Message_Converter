@@ -1,39 +1,34 @@
 # Message Converter
 
-Scrambles a message or word(s) with the ISH chipher.
-
+Scrambles a message or word(s) with the ISH cipher.
 
 ## Getting Started
 
-* Run ```git clone https://github.com/MdeFrance/Message_Converter.git```
+```
+git clone https://github.com/TwoChill/Message_Converter.git
+```
 
+Run the script:
 
-* Run ```(YOUR PATH)/Message_Converter.py ```
+```
+python Message_Converter.py
+```
 
 1. Enter your message / text.
 2. Press Enter/Return.
-3. Copy the new text to your clipboard or not.
+3. Choose to copy the converted text to your clipboard, or convert another message.
 
+## Prerequisites
 
-### Prerequisites
+Install the clipboard module:
 
-To use the Copy-To-Clipboard install module pyperclip:
-
-* On Windows:
-    ```
-    pip install pyperclip
-    ```
-* On Debian:
-    ```
-    sudo apt-get update
-    sudo apt-get install python3-pyperclip
-    ```
+```
+pip install pyperclip
+```
 
 ## Built With
 
-* [Atom](http://atom.io) - A well known text editor.
-* [Python] - A powerfull language
-
+* [Python](https://www.python.org/) - A powerful language
 
 ## Authors
 

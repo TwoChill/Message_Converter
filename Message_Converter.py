@@ -1,58 +1,59 @@
-import pyperclip  # $ pip install pyperclip
+import re
+import pyperclip  # pip install pyperclip
 
 name = 'Message Converter (Dutch)'
+CIPHER = "ISH"
+
+# Single-pass regex: digraphs are listed before single vowels so they match
+# first, preventing a vowel inside a digraph from being replaced twice.
+_PATTERN = re.compile(r'oei|aa|ae|ee|oo|uu|au|ei|eu|ie|ou|oe|ui|ij|io|[aeoiuy]')
 
 
-def convertword(word):
-    # These are the letters to concatenate with the ciPher.
-    vowel_list = (("oei", "aa", "ae", "ee", "ae", "oo", "uu", "au", "ei", "eu", "ie", "ou", "oe", "ui", "ij", "io"),
-                  ("a", "e", "o", "u", "i", "y"))
+def convertword(word, cipher=CIPHER):
+    return _PATTERN.sub(lambda m: cipher + m.group().upper(), word)
 
-    # Puts the 'ciPher' before the letters in vowel_list
-    for letters in vowel_list[0]:
-        if letters in word:
-            word = word.replace(letters, ciPher + letters.upper())
 
-    for letter in vowel_list[1]:
-        if letter in word:
-            word = word.replace(letter, ciPher + letter.upper())
+def convert_message(message, cipher=CIPHER):
+    words = message.replace(",", "~").lower().split(" ")
+    converted = [convertword(w, cipher) for w in words]
+    result = " ".join(converted).replace("~", ",")
 
-    return word
+    # Capitalize the first letter of each sentence without lowercasing the rest.
+    sentences = [s.strip() for s in result.split('.') if s.strip()]
+    result = '. '.join(s[0].upper() + s[1:] for s in sentences)
+    return result
+
 
 print('=' * len(name))
 print(name)
 print('=' * len(name))
 
-ciPher = "ISH"
+while True:
+    try:
+        message = input("\nEnter your message:\n:> ").strip()
+        if not message:
+            continue
 
-try:
-    convertedMSG = str(input("\nEnter your message:\n:> ")).strip()
+        result = convert_message(message)
 
-    # Replaces commas and splits sentences to words in a list.
-    convertedMSG = convertedMSG.replace(",", "~").lower().split(" ")
+        print(f"\nYour message in {CIPHER}:")
+        print(result)
 
-    # Convert each word in the message
-    convMSG = [convertword(word) for word in convertedMSG]
+        answer = input('\nCopy to clipboard? Y/N: ').strip().upper()
+        if answer == 'Y':
+            try:
+                pyperclip.copy(result)
+                print('\nMessage has been copied.')
+            except Exception:
+                print('\nCould not access clipboard.')
+        else:
+            print('\nMessage has NOT been copied.')
 
-    print("\nYour message in " + ciPher)
+        again = input('\nConvert another? Y/N: ').strip().upper()
+        if again != 'Y':
+            print('\nGoodbye!\n')
+            break
 
-    # Join words into a single string, replace temporary '~' back to ',', and capitalize sentences.
-    convMSG = " ".join(convMSG).replace("~", ",").capitalize()
-
-    # Split by sentences to ensure capitalization after periods
-    sentences = convMSG.split('.')
-    convMSG = '. '.join(sentence.strip().capitalize() for sentence in sentences if sentence)
-
-    print(convMSG)
-
-    # Ask the user if they want to copy the new text to the clipboard.
-    answer = str(input('\n\nCopy to clipboard? Y/N: ').upper()).strip()
-
-    if answer == 'Y':
-        pyperclip.copy(convMSG)
-        print('\nMessage has been copied.')
-    else:
-        print('\nMessage has NOT been copied.')
-
-except KeyboardInterrupt:
-    print("\n\n\nGoodbye!\n")
+    except KeyboardInterrupt:
+        print('\n\nGoodbye!\n')
+        break
