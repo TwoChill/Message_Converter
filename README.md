@@ -2,6 +2,13 @@
 
 Scrambles a message or word(s) with the ISH cipher.
 
+## Installation
+
+```bash
+pip install -r requirements.txt
+python Message_Converter.py
+```
+
 ## Getting Started
 
 ```
